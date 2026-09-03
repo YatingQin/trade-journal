@@ -177,4 +177,3 @@ onMounted(handleLoad)
   gap: 8px;
 }
 </style>
-
