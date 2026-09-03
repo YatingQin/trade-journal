@@ -5,44 +5,13 @@
  * @date 2026-09-03
  * @version 1.0.0
  */
-
 <template>
-  <span
-    class="reason-tag"
-    :class="`reason-tag--${normalizedType}`"
-  >
-    {{ displayText }}
-  </span>
+  <span class="reason-tag" :class="`reason-tag--${normalizedType}`">{{ displayText }}</span>
 </template>
-
 <script setup>
 import { computed } from 'vue'
 import { formatReasonType } from '@/utils/format'
-
-const props = defineProps({
-  /** 原因类型：take_profit / stop_loss / other */
-  reasonType: {
-    type: String,
-    default: 'other'
-  },
-  /** 自定义展示文案；为空则显示类型名 */
-  label: {
-    type: String,
-    default: ''
-  }
-})
-
-const normalizedType = computed(() => {
-  if (['take_profit', 'stop_loss', 'other'].includes(props.reasonType)) {
-    return props.reasonType
-  }
-  return 'other'
-})
-
-const displayText = computed(() => {
-  if (props.label) {
-    return props.label
-  }
-  return formatReasonType(normalizedType.value)
-})
+const props = defineProps({ reasonType: { type: String, default: 'other' }, label: { type: String, default: '' } })
+const normalizedType = computed(() => ['take_profit','stop_loss','other'].includes(props.reasonType) ? props.reasonType : 'other')
+const displayText = computed(() => props.label || formatReasonType(normalizedType.value))
 </script>
