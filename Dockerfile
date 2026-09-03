@@ -1,5 +1,6 @@
 # 交易复盘 — Dockerfile
 # 构建前端后由 Express 统一托管，适合 Render / Railway 等免费云托管
+# 依赖均为纯 JS（bcryptjs、pg），无需原生编译工具链
 
 FROM node:18-bookworm-slim AS web-build
 WORKDIR /app/web
@@ -10,8 +11,6 @@ RUN npm run build
 
 FROM node:18-bookworm-slim
 WORKDIR /app
-RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ \
-  && rm -rf /var/lib/apt/lists/*
 
 COPY server/package*.json ./server/
 WORKDIR /app/server
