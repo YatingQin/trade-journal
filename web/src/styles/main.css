@@ -1,0 +1,383 @@
+:root {
+  /* TradingView 暗色主题 */
+  --color-bg: #131722;
+  --color-bg-deep: #0c0e15;
+  --color-surface: #1e222d;
+  --color-surface-hover: #252a37;
+  --color-ink: #d1d4dc;
+  --color-muted: #787b86;
+  --color-brand: #2962ff;
+  --color-brand-soft: #1e53e5;
+  --color-accent: #ff9800;
+  /* 中国市场习惯：红盈绿亏 */
+  --color-win: #f23645;
+  --color-loss: #089981;
+  --color-win-bg: rgba(242, 54, 69, 0.16);
+  --color-loss-bg: rgba(8, 153, 129, 0.16);
+  --color-other: #2962ff;
+  --color-other-bg: rgba(41, 98, 255, 0.16);
+  --color-open: #ff9800;
+  --color-open-bg: rgba(255, 152, 0, 0.16);
+  --color-border: #2a2e39;
+  --color-input-bg: #131722;
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.35);
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --font-sans: 'IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-display: 'IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --nav-height: 56px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background:
+    radial-gradient(ellipse at top, rgba(41, 98, 255, 0.08), transparent 42%),
+    linear-gradient(180deg, var(--color-bg-deep) 0%, var(--color-bg) 100%);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 calc(88px + var(--safe-bottom));
+  flex: 1;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3.5vw, 1.9rem);
+  margin: 0 0 8px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #f0f3fa;
+}
+
+.page-subtitle {
+  margin: 0 0 24px;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 20px;
+}
+
+.panel + .panel {
+  margin-top: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.18s ease, background 0.18s ease, opacity 0.18s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-brand-soft);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface-hover);
+}
+
+.btn-danger {
+  background: var(--color-win-bg);
+  color: var(--color-win);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-input-bg);
+  color: var(--color-ink);
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-brand);
+}
+
+.field option {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.field textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.stat-card .label {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.stat-card .value {
+  margin-top: 8px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #f0f3fa;
+}
+
+.value-win {
+  color: var(--color-win) !important;
+}
+
+.value-loss {
+  color: var(--color-loss) !important;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+table.data-table th,
+table.data-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+table.data-table th {
+  color: var(--color-muted);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+table.data-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 500;
+  background: rgba(209, 212, 220, 0.08);
+  color: var(--color-ink);
+}
+
+.tag-win {
+  background: var(--color-win-bg);
+  color: var(--color-win);
+}
+
+.tag-loss {
+  background: var(--color-loss-bg);
+  color: var(--color-loss);
+}
+
+.tag-open {
+  background: var(--color-open-bg);
+  color: var(--color-open);
+}
+
+/* 止盈 / 止损 / 其他 原因标签（TradingView 风格） */
+.reason-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.reason-tag--take_profit {
+  background: var(--color-win-bg);
+  color: var(--color-win);
+}
+
+.reason-tag--stop_loss {
+  background: var(--color-loss-bg);
+  color: var(--color-loss);
+}
+
+.reason-tag--other {
+  background: var(--color-other-bg);
+  color: var(--color-other);
+}
+
+.empty-state {
+  padding: 28px 12px;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.list-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-card:last-child {
+  border-bottom: none;
+}
+
+.list-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: #f0f3fa;
+}
+
+.list-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.inline-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.error-text {
+  color: var(--color-win);
+  margin: 0 0 12px;
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    width: calc(100% - 24px);
+    padding-top: 16px;
+  }
+
+  .grid-2,
+  .grid-3,
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+}

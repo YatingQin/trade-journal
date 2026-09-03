@@ -1,0 +1,45 @@
+---
+description: GL/T-1252 Web 前端命名规范（光力科技）
+globs: "**/*.{vue,js,ts,jsx,tsx,css,scss,less,html}"
+alwaysApply: false
+---
+
+# GL/T-1252 Web 命名规范
+
+来源：光力科技《Web前端编码规范》第1版（2025-10-10）
+
+## 项目与文件
+
+| 类型 | 规则 | 示例 |
+|------|------|------|
+| 项目名/目录名 | 小写 + kebab-case；复数用复数 | `my-project`、`components`、`utils` |
+| 图像/HTML | 小写；多词用 `_` | `user_avatar.png` |
+| CSS/JS | 小写；多词用 `-` | `main-layout.css`、`user-api.js` |
+
+## Vue 组件命名
+
+- 单文件组件：PascalCase（`UserProfile.vue`）
+- 单例（每页唯一、无 prop）：`The` 前缀（`TheHeader.vue`）
+- 基础通用组件：`Base` 前缀（`BaseModal.vue`）
+- 业务可复用组件：`Custom` 前缀（`CustomOrderTable.vue`）
+- 紧耦合子组件：以父组件名为前缀
+- 单词顺序：高级别词在前、修饰词在后；倾向全单词，少用冷门缩写
+
+## 代码标识符
+
+| 类型 | 风格 | 说明 |
+|------|------|------|
+| 变量 | camelCase | 类型 + 对象/属性描述 |
+| 常量 | `UPPER_SNAKE_CASE` | 全大写 + `_` |
+| 方法 | camelCase | 动词或动词+名词 |
+| 类 | PascalCase | 首字母大写 |
+| 路由名 | kebab-case | Vue Router |
+| 自定义事件名 | kebab-case | 建议 `on` + 动词 |
+| 事件处理方法 | camelCase | `handle` + 名称 + 动词 |
+
+布尔/访问器前缀：`can`/`has`/`is`（返回布尔）、`get`（取值）、`set`（设置）
+
+## 其它
+
+- 函数内需要保留 `this` 时，统一 `const self = this`
+- CSS 选择器、属性名、关键字一律小写

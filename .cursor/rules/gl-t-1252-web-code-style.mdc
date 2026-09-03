@@ -1,0 +1,37 @@
+---
+description: GL/T-1252 Web 前端代码规范 HTML/CSS/JS/Vue（光力科技）
+globs: "**/*.{vue,js,ts,jsx,tsx,css,scss,less,html}"
+alwaysApply: false
+---
+
+# GL/T-1252 Web 代码规范
+
+来源：光力科技《Web前端编码规范》第1版（2025-10-10）
+
+## HTML
+
+- 多个 attribute 时每个 attribute 独占一行
+- 块级元素独立一行；自定义非标准属性以 `data-` 开头
+- 行内元素内禁止嵌套块级元素（如 `a`/`span` 内不要套 `div`）
+
+## CSS
+
+- 使用展开格式（Expanded）；选择器/属性小写
+- `{` 前有空格；`:` 与属性值之间有空格；需要引号时用单引号
+- 每个选择器或新声明另起一行
+- 样式优先独立 CSS 文件；少量样式可放 `head`，勿把 `style` 放 `body`（防二次渲染/闪屏）
+
+## JavaScript
+
+- `<script>` 放在 `body` 底部，不要放 `head`
+- JS 尽量独立成文件，便于缓存与整洁
+- 大括号风格统一；逗号后加空格、逗号前不加；操作符前后加空格；代码块前加空格
+- 使用 `let`/`const`，避免 `var`
+- 过长函数拆分为多个方法
+- 谨慎使用 `console.log`，调试完必须删除
+- 用枚举/常量表达含义，避免无意义魔法值
+
+## Vue
+
+- 组件 `data` 必须是函数
+- `v-if` 与 `v-for` 不要写在同一元素上（避免性能浪费）
